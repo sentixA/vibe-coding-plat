@@ -1,0 +1,10 @@
+{
+  "_comment": "本仓库使用自研 mutation runner（tests/mutation/runner.ts），不强制依赖 Stryker。",
+  "_comment2": "如需启用 Stryker，请安装 @stryker-mutator/core @stryker-mutator/vitest-runner 并删除此注释。",
+  "$schema": "https://raw.githubusercontent.com/stryker-mutator/stryker-js/master/packages/core/schema/stryker-schema.json",
+  "packageManager": "pnpm",
+  "reporters": ["html", "clear-text", "progress"],
+  "testRunner": "vitest",
+  "coverageAnalysis": "perTest",
+  "mutate": ["packages/*/src/**/*.ts", "scripts/**/*.ts"]
+}

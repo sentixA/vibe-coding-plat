@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# commit-msg hook — 校验 conventional commit 格式
+#
+# 加载方式：
+#   git config core.hooksPath .githooks
+# 或由 packages/git/src/install.ts 的 installHooks() 自动配置。
+#
+# 该 hook 调用 commitlint 校验提交消息。
+# commitlint.config.cjs 由 M5 (测试闸门) 维护，需在仓库根目录存在。
+# 非 TTY / CI 环境下同样工作，commitlint 本身不需要 TTY。
+#
+# 用法：由 git 自动传入提交消息文件路径作为 $1
+
+set -euo pipefail
+
+# 检查 npx 是否可用
+if ! command -v npx &>/dev/null; then
+  echo "[commit-msg] 警告: npx 不在 PATH，跳过 commitlint 校验" >&2
+  exit 0
+fi
+
+# 调用 commitlint 校验提交消息
+npx --no -- commitlint --edit "$1"

@@ -1,0 +1,16 @@
+# Docker fallback：当 bwrap 不可用（非 Linux 或未安装）时使用
+# 基于 node:22-bookworm-slim，装常用工具
+FROM node:22-bookworm-slim
+
+# 安装常用工具
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    git \
+    bash \
+    ca-certificates \
+    python3 \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /workspace
+
+# 默认进入 bash，由 sandbox-run.ts 传入要执行的命令
+ENTRYPOINT ["bash"]

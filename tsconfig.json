@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "lib": ["ES2022"],
+    "types": ["node"],
+    "strict": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "baseUrl": ".",
+    "paths": {
+      "@vcp/*": ["packages/*/src"],
+      "#shared/*": ["scripts/_shared/*"]
+    }
+  },
+  "include": ["scripts/**/*.ts", "packages/*/src/**/*.ts", "tests/**/*.ts"],
+  "exclude": ["node_modules", "**/dist"]
+}

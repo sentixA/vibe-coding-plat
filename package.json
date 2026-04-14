@@ -1,0 +1,37 @@
+{
+  "name": "vibe-coding-plat",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Vibe coding platform workflow scaffold for Claude Code (SDD + chaos tests + vector search + session memory)",
+  "packageManager": "pnpm@10.33.0",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "bootstrap": "tsx scripts/bootstrap.ts",
+    "memory": "tsx scripts/memory.ts",
+    "memory:ingest": "tsx scripts/memory-ingest.ts",
+    "index": "tsx scripts/index.ts",
+    "search": "tsx scripts/search.ts",
+    "wiki:compile": "tsx scripts/wiki-compile.ts",
+    "context": "tsx scripts/context.ts",
+    "sandbox": "tsx scripts/sandbox-run.ts",
+    "approve": "tsx scripts/approve.ts",
+    "verify": "tsx scripts/verify.ts",
+    "test:unit": "vitest run",
+    "test:chaos": "tsx tests/chaos/runner.ts",
+    "test:mutation": "tsx tests/mutation/runner.ts",
+    "prepare": "tsx packages/git/src/install.ts"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.8.0",
+    "@commitlint/config-conventional": "^19.8.0",
+    "@types/node": "^22.10.0",
+    "cac": "^6.7.14",
+    "execa": "^9.6.1",
+    "tsx": "^4.19.2",
+    "typescript": "^5.6.3",
+    "vitest": "^2.1.8"
+  }
+}

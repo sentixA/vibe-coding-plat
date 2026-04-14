@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# pre-commit hook — 提交前跑验证闸门
+#
+# 加载方式：
+#   git config core.hooksPath .githooks
+# 或由 packages/git/src/install.ts 的 installHooks() 自动配置。
+#
+# 该 hook 跑 pnpm run verify --quick，失败则拒绝提交。
+# 可用 git commit --no-verify 跳过（git 默认行为）。
+# 非 TTY / CI 环境下同样工作（不交互）。
+
+set -euo pipefail
+
+# 检查 pnpm 是否可用，不可用则降级为警告并放行
+if ! command -v pnpm &>/dev/null; then
+  echo "[pre-commit] 警告: pnpm 不在 PATH，跳过 verify 检查" >&2
+  exit 0
+fi
+
+echo "[pre-commit] 运行 pnpm run verify --quick ..." >&2
+pnpm run verify --quick

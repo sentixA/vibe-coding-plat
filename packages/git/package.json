@@ -1,0 +1,15 @@
+{
+  "name": "@vcp/git",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Git 工作流集成：注册 .githooks/ 为 core.hooksPath，提供 install/uninstall/status",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "cac": "^6.7.14",
+    "execa": "^9.5.2"
+  }
+}
